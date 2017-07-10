@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>test</title>
+		<link rel="stylesheet" href="css.css"/>
+		<script src="p5.js"></script>
+		<script>
+			
+		var list;
+
+		function preload(){
+		  list = loadJSON("data.json");  
+		  
+		}
+		function setup(){
+		  var list = list.names;
+		  for(var i = 0; i < names.length; i++){
+		    createP(names[i]);
+		  }
+		}
+
+		</script>
+
+	</head>
+</html>

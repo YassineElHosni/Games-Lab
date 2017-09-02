@@ -1,7 +1,6 @@
 <html>
 	<head>
 		<title>Games-Lab</title>
-		<link rel="stylesheet" href="css.css"/>
 		<script src="p5.js"></script>
 		<script>
 			
@@ -20,15 +19,15 @@
 			var ch = "<ul id='menu'>";
 						for(var i = 0; i < names.length; i++){
 							//createP(names[i]);
-							createLink(names[i]);
+							ch += createLink(names[i]);
 						}
-				ch = "</ul>";
-				alert(ch);
+				ch += "</ul>";document.getElementById("menu").innerHTML = ch;
+			
 		}
 		//create a link form a given folder name.
 		function createLink(folderName){
 			var ch = "<li>"+
-						"<a href='/"+folderName+"/index.html'>"+
+						"<a href='/Games-Lab/folder1/"+folderName+"/index.html'>"+
 							folderName+
 						"</a>"+
 					"</li>";

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Prefresh" content="20" />
+	<title></title>
+	<script src="js/jquery.js"></script>
+	</head>
+	<style>
+		div:hover{
+
+		}
+	</style>
+<body>
+<div id = "b" style="position:relative;"></div>
+<div id = "f" style = "background-color:blue;color:black;position:absolute;width:500px;height:150px;text-align:center;font-size:35px;left:200px;top:500px;" onmouseover="hovering(2);">this is it!</div>
+
+<script>
+		var list = [];
+			var marg = 10;
+		for (var i = 0; i < 3; i++) {//58
+			list.push("txt ("+(i+1)+").jpg")
+		}
+		//alert(list.length);
+		function position(index,i){
+			if(i>index){
+				marg+=5;
+			}else if(i<index){
+				marg-=5;
+			}
+			return "<img src='img/bg/txt ("+(i+1)+").jpg' style='position:absolute;left:"+((i+1)*marg)+"px;top:"+i+2+"px;'></img>\n";
+		}
+		function hovering(index){
+			show(index,true);
+		}
+		function show(index,isHover){
+			var ch = "";
+			for (var i = 0; i < list.length; i++) {
+				if(!isHover){
+					index=i;
+				}
+				ch += position(index,i);	
+			}
+			//alert(ch);
+			document.getElementById("b").innerHTML= ch;
+
+			//alert("w");
+		}
+		show(0,false);
+		//document.getElementById("b").hover(hovering(0));
+</script>
+</body>
+</html>

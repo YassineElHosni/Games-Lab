@@ -1,3 +1,5 @@
+var canvas;
+
 var eyesColor;
 var hairColor;
 var skinColor;
@@ -10,7 +12,7 @@ var skincol;
 
 function setup() {
   //0 backgound
-  createCanvas(400, 400);
+  canvas = createCanvas(400, 400);
   background(200);
 
   colorMode(HSB, 255);
@@ -29,7 +31,7 @@ function setup() {
   createClodes();
   createFace();
 
-
+  centerSketch();
 
   //createColors();
 }
@@ -189,6 +191,13 @@ function randomColors(){
         }
   skincol =  color(random(255), 59, 226);
   
+}
+
+function centerSketch(){
+  canvas.position((windowWidth-width)/2,(windowHeight-height)/2);
+}
+function windowResized(){
+  centerSketch();
 }
 
 

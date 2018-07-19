@@ -1,4 +1,11 @@
 {
-"FolderName":"bubbles_random_color_move_when_colliding_goCrazy_when_pressed",
-"FolderName":"project_face_creation"
+"description":"A list of the folders inside the current folder.",
+"names": [
+"bubbles_random_color_move_when_colliding_goCrazy_when_pressed",
+"matrix advance 2",
+"particles with trails",
+"pixel screen draw-save-display",
+"project_face_creation",
+"Steering_Behaviors"
+]
 }

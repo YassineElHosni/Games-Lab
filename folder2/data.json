@@ -2,15 +2,12 @@
 "description":"A list of the folders inside the current folder.",
 "names": [
 "bubbles_random_color_move_when_colliding_goCrazy_when_pressed",
-"image_example",
-"inputButton_example",
 "matrix advance 2",
 "particles with trails",
 "pixel screen draw-save-display",
 "project_face_creation",
 "recap",
 "Smart_Rockets",
-"sound_example",
 "Steering_Behaviors",
 "tp perso html jeux"
 ]

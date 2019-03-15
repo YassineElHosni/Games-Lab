@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Games-Lab</title>
@@ -27,8 +28,9 @@
 		//create a link form a given folder name.
 		function createLink(folderName){
 			var ch = "<li>"+
-						"<a href='/Games-Lab/folder1/"+folderName+"/index.html'>"+
-							folderName+
+						"<a href='/Games-Lab/folder1/"+folderName+"/index.html'>";
+					folderName.replace("_", " ");
+					ch += folderName+
 						"</a>"+
 					"</li>";
 			return ch;
@@ -72,12 +74,12 @@
 	</head>
 	<body style="margin:0;padding:10px 20px;background-color:gray;padding-top:0px">
 		<header style="background-color:#4445c1;">
-			<h1 style="padding:10px;font-family:'Algerian';padding-left:15px;">Games-Lab</h1>
-			<ul id="menu">
-				<li><a href="#">link 1</a></li>
-				<li><a href="#">link 2</a></li>
-				<li><a href="#">link 3</a></li>
-			</ul>
+			<div>
+				<h1 style="padding:10px;font-family:'Algerian';padding-left:15px;">while (!(succeed = try()));</h1>
+				<ul id="menu">
+					<li><a href="#">empty</a></li>
+				</ul>
+			</div>
 		</header>
 
 		<div >

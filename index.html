@@ -1,3 +1,106 @@
-<html>
-<title>test</title>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+		<title>Games-Lab</title>
+		<script src="folder2/p5.js"></script>
+		<script>
+			
+		var list;
+
+		function preload(){
+		  list = loadJSON("folder2/data.json");  
+		  
+		}
+		function setup(){
+			createMenu();
+		}
+		//create a menu with the names of foldes inside the current folder.
+		function createMenu(){
+			var names = list.names;
+			var ch = "<ul id='menu'>";
+						for(var i = 0; i < names.length; i++){
+							//createP(names[i]);
+							ch += createLink(names[i]);
+						}
+				ch += "</ul>";document.getElementById("menu").innerHTML = ch;
+			
+		}
+		//create a link form a given folder name.
+		function createLink(folderName){
+			var ch = "<li>"+
+						"<a href='/Games-Lab/folder1/"+folderName+"/index.html'>";
+					folderName = folderName.replace(/[_|-]/g, " ");
+					ch += folderName.toLowerCase()+
+						"</a>"+
+					"</li>";
+			return ch;
+		}
+		</script>
+		<style>
+		#menu {
+			font-size:18px;
+			font-family:'Agency FB';
+		    list-style-type: none;
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;
+		    background-color:#3333c1;
+		}
+
+		#menu li {
+		    float: left;
+		}
+
+		#menu li a {
+		    color: white;
+		    text-align: center;
+
+		    padding: 14px 16px;
+		    display: block;
+		    text-decoration: none;
+		}
+
+		#menu li a:hover {
+		    background-color:blue;
+		}
+
+		#menu .active {
+		    background-color: red;
+		}
+		div{
+			position:a;
+		}
+		</style>
+	</head>
+<!-- <frameset rows="25%,*"> -->
+<!-- <frameset rows="*">
+	<frame name="a" src="./folder1/Steering_Behaviors_Welcome/index.html">
+	<frame name="b" src="./folder2/index.html">
+</frameset> -->
+<body style="margin:0;padding:10px 20px;background-color:gray;padding-top:0px;margin-top:10px;">
+	
+<header style="background-color:#4445c1;">
+			<div>
+<iframe id="exampleFrame" scrolling="no" src="./folder1/Steering_Behaviors_Welcome/index.html" style="width: 100%; height: 150px;border: none;"></iframe>
+				<!-- <h1 style="padding:10px;font-family:'Algerian';padding-left:15px;">while (!(succeed = try()));</h1> -->
+				<ul id="menu">
+					<li><a href="#">empty</a></li>
+				</ul>
+			</div>
+		</header>
+
+		<div style="margin-top: 5px">
+			<h3 style="font-size:24px;font-family:'Agency FB';background:green;margin:0;padding:15px;text-align:center;color:silver;">Home Page</h3>
+			<div style="font-family:'Times New Roman';font-size:18px;background-color:silver;margin:0;padding:15px 10px 35px 10px;"><b>Welcome</b> to my web site,<br/>&nbsp;&nbsp;My name is <b>yassine el hosni</b>, and i'm a <b>software developer</b>. Lately i was studying video games programming on p5 (a <b><u>javaScript</u></b> library).. after a while i started sharing my progress.. and it occurred to me that when i send links to my friends and family many problems presented themselves; for example the fact that the links are not static, because i make a lot of changes from time to time so any time i do i need to edite the links on every post.. and for every prototype i need to make a new post. ... so i created this website :) .<p>*javaScript is a programming language.</p></div>
+			
+		</div>
+
+		<footer style="font-family:'Consolas';background-color:darkgreen;margin:0;text-align:center;padding:10px 20px;">copyright © 2017</footer>
+</body>
+
+
 </html>

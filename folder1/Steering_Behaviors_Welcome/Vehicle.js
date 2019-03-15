@@ -59,7 +59,7 @@ Vehicle.prototype.flee = function(target){
 
 
 Vehicle.prototype.show = function(){//68,69,193
-  stroke(random(100,200),random(100,250),random(60,250));//31,255,236//31,198,232//87,182,255//31,94,232//35,48,255
+  stroke(random(60,200),random(60,250),random(60,250));//31,255,236//31,198,232//87,182,255//31,94,232//35,48,255
   strokeWeight(this.r);
   point(this.pos.x, this.pos.y);
 }

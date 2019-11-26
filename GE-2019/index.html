@@ -14,41 +14,43 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
 <script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyARJuszcyLq2eTRfHkfqSAbSTXNaYacBEM",
-    authDomain: "ge-2019-88f63.firebaseapp.com",
-    databaseURL: "https://ge-2019-88f63.firebaseio.com",
-    projectId: "ge-2019-88f63",
-    storageBucket: "ge-2019-88f63.appspot.com",
-    messagingSenderId: "143164145864",
-    appId: "1:143164145864:web:2489a124239dcac93865fd"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+		apiKey: "AIzaSyARJuszcyLq2eTRfHkfqSAbSTXNaYacBEM",
+		authDomain: "ge-2019-88f63.firebaseapp.com",
+		databaseURL: "https://ge-2019-88f63.firebaseio.com",
+		projectId: "ge-2019-88f63",
+		storageBucket: "ge-2019-88f63.appspot.com",
+		messagingSenderId: "143164145864",
+		appId: "1:143164145864:web:2489a124239dcac93865fd"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
 
 
-  function saveToFirebase(login, pw, email, type, remarque, email_valide) {
-    var compteObject = {
-    	login: login
-    	pw: pw
-        email: email
-        type: type
-        remarque: remarque
-        email_valide: email_valide
-    };
+	function saveToFirebase(myObject){
+		firebase.database().ref('users').push().set(myObject)
+		.then(function(snapshot) {
+		console.log('success!');
+		//success(); // some success method
+		}, function(error) {
+		console.log('error' + error);
+		//error(); // some error method
+		});
+	}
+	function compteInsertion(login, pw, email, type, remarque, email_valide) {
+		var compteObject = {
+		login: login,
+		pw: pw,
+		email: email,
+		type: type,
+		remarque: remarque,
+		email_valide: email_valide
+		};
+		saveToFirebase(compteObject);
+	}
 
-    firebase.database().ref('users').push().set(compteObject)
-        .then(function(snapshot) {
-            console.log('success!');
-            //success(); // some success method
-        }, function(error) {
-            console.log('error' + error);
-            //error(); // some error method
-        });
-}
-
-saveToFirebase("yassine", "azerty123", "hosni.yassine.yh@gmail.com", "ADMIN", "this is the one and only full time crazy!", 0);
+	compteInsertion("yassine", "azerty123", "hosni.yassine.yh@gmail.com", "ADMIN", "this is the one and only full time crazy!", 0);
 </script>
 </body>
 </html>

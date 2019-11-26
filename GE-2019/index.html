@@ -5,11 +5,25 @@
 </head>
 <body>
 
-
+<table id="userTable" style="padding-left:25%;padding-bottom:5%;">
+	
+</table>
+<div style="padding-left:25%;">
+	LOGIN : <input type="text" id="login"/><br>
+	PW : <input type="text" id="pw"/><br>
+	EMAIL : <input type="text" id="email"/><br>
+	TYPE : <select id="type">
+				<option value="ADMIN">ADMIN</option>
+				<option value="CLIENT">CLIENT</option>
+				<option value="MONITOR">MONITOR</option>
+			</select><br>
+	<input type="button" value="save" id="btn_compteInsertion" onclick="compteInsertionFromForm()">
+</div>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
-
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
@@ -38,8 +52,25 @@
 		//error(); // some error method
 		});
 	}
-	function compteInsertion(login, pw, email, type, remarque, email_valide) {
+	function getIdFromRowCount(){
+		return document.querySelectorAll("#userTable tr").length;
+	}
+	function compteInsertionFromForm() {
 		var compteObject = {
+		id: getIdFromRowCount(),
+		login: document.getElementById('login').value,
+		pw: document.getElementById('pw').value,
+		email: document.getElementById('email').value,
+		type: document.getElementById('type').value,
+		remarque: "",
+		email_valide: 0
+		};
+		saveToFirebase(compteObject);
+		compteConsultation('/users/');
+	}
+	function compteInsertion(id, login, pw, email, type, remarque, email_valide) {
+		var compteObject = {
+		id: id,
 		login: login,
 		pw: pw,
 		email: email,
@@ -50,7 +81,52 @@
 		saveToFirebase(compteObject);
 	}
 
-	compteInsertion("yassine", "azerty123", "hosni.yassine.yh@gmail.com", "ADMIN", "this is the one and only full time crazy!", 0);
+	//compteInsertion(0, "yassine", "azerty123", "hosni.yassine.yh@gmail.com", "ADMIN", "this is the one and only full time crazy!", 0);
+
+
+	function fillRow(rowData){
+		document.getElementById('userTable').innerHTML = document.getElementById('userTable').innerHTML + rowData;
+	}
+//////////
+class Compte {
+	constructor(id, login, pw, email, type, remarque, email_valide) {
+		this.id = id;
+		this.login = login;
+		this.pw = pw;
+		this.email = email;
+		this.type = type;
+		this.remarque = remarque;
+		this.email_valide = email_valide;
+	}
+	toString(){
+		return (`${this.id} ${this.login} ${this.pw} ${this.email} ${this.type} ${this.remarque} ${this.email_valide}.`);
+	}
+	toTableRow(){
+		return (`<tr><td>${this.id}</td><td>${this.login}</td><td>${this.pw}</td><td>${this.email}</td><td>${this.type}</td><td>${this.remarque}</td><td>${this.email_valide}</td></tr>`);
+	}
+}
+//////////
+	function compteConsultation(str){
+		//var userId = firebase.auth().currentUser.uid;
+		return firebase.database().ref(str).once('value').then(function(snapshot) {
+				//console.log(snapshot);
+			  //var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+			  // ...
+			  document.getElementById('userTable').innerHTML = "";
+			  snapshot.forEach(function(childSnapshot) {
+			    var childKey = childSnapshot.key;
+			    var childData = childSnapshot.val();
+
+			    let c = new Compte(childData.id, childData.login, childData.pw, childData.email, childData.type, childData.remarque, childData.email_valide);
+
+			    console.log(childKey+", "+c.toString()+"!");
+			    console.log(c.toTableRow());
+			    fillRow(c.toTableRow());
+			  });
+
+			});
+	}
+	compteConsultation('/users/');
 </script>
 </body>
 </html>

@@ -7,7 +7,6 @@
 
 
 
-
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
 
@@ -27,6 +26,29 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+
+
+  function saveToFirebase(login, pw, email, type, remarque, email_valide) {
+    var compteObject = {
+    	login: login
+    	pw: pw
+        email: email
+        type: type
+        remarque: remarque
+        email_valide: email_valide
+    };
+
+    firebase.database().ref('users').push().set(compteObject)
+        .then(function(snapshot) {
+            console.log('success!');
+            //success(); // some success method
+        }, function(error) {
+            console.log('error' + error);
+            //error(); // some error method
+        });
+}
+
+saveToFirebase("yassine", "azerty123", "hosni.yassine.yh@gmail.com", "ADMIN", "this is the one and only full time crazy!", 0);
 </script>
 </body>
 </html>

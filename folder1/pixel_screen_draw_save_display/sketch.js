@@ -1,3 +1,14 @@
+var currentGame;
+function createDivDescription(){
+  var divDescription = createDiv();
+  divDescription.html("<h1 id='gameTitle'>"+currentGame.title+"</h1>"+
+                "<div id='gameDescription'>"+currentGame.description+"</div>"+
+                "<div id='gameType'>"+currentGame.type+"</div>"+
+                "<div id='gameCopyright'>"+currentGame.copyright+"</div>");
+}
+function preload(){
+  currentGame = loadJSON("manifest.json");
+}
 
 var ps = [];
 var numbers = [];
@@ -6,6 +17,7 @@ var pixSize = 30;
 
 var displayIndex = 0;
 function setup() {
+  createDivDescription();
   createCanvas(400,300);
   background(150);
   

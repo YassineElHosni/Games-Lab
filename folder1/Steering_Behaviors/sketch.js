@@ -1,12 +1,25 @@
+var currentGame;
+function createDivDescription(){
+  var divDescription = createDiv();
+  divDescription.html("<h1 id='gameTitle'>"+currentGame.title+"</h1>"+
+                "<div id='gameDescription'>"+currentGame.description+"</div>"+
+                "<div id='gameType'>"+currentGame.type+"</div>"+
+                "<div id='gameCopyright'>"+currentGame.copyright+"</div>");
+}
+
 var font;
 
 var vehicles = [];
 
 var textInput;
 function preload() {
+  currentGame = loadJSON("manifest.json");
+
   font = loadFont('American Captain.otf');   
 }
 function setup(){
+  createDivDescription();
+
   console.log("runnin!");
   createCanvas(windowWidth, windowHeight);
   background(51);

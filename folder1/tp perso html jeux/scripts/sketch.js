@@ -3,7 +3,17 @@
 	///						///
 
 	var boomSound;
+	var currentGame;
+function createDivDescription(){
+	var divDescription = createDiv();
+	divDescription.html("<h1 id='gameTitle'>"+currentGame.title+"</h1>"+
+	              "<div id='gameDescription'>"+currentGame.description+"</div>"+
+	              "<div id='gameType'>"+currentGame.type+"</div>"+
+	              "<div id='gameCopyright'>"+currentGame.copyright+"</div>");
+}
 function preload(){
+  
+  currentGame = loadJSON("manifest.json");
   
   //images
 	console.log('images loading!');
@@ -62,11 +72,12 @@ function booom(x, y, col){
 	}
 }
 function setup() {
-	
 	//sound
 	console.log('sound loading!');
 	boomSound = loadSound("assets/sound/boom.mp3");
 	console.log('sound loaded!');
+	
+  createDivDescription();
 	
 	count = 0;
 	plys.push(new ply(100, 100));

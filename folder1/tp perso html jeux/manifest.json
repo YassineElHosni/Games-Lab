@@ -1,0 +1,6 @@
+{
+	"title": "Face Edit",
+	"description":"The most time consuming p5js project i ever made, it is a challenge that i put up on my self to redo a game my older brother did years ago, it is currently a PC version only, so no why you could move the character without a keybord.\n instruction on how to play: e=up, d=down, f=right, s=left, b=putBomb.\n it is currently really low on functionalities, updates comming soon. #needs_inputs_for_mobile #needs_multiplayer_mode #needs_a_goal",
+	"type": "EXPERIMENT",
+	"copyright": "YH"
+}

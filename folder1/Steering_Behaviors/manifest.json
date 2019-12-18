@@ -1,0 +1,6 @@
+{
+	"title": "Run text run",
+	"description":"A cool animation of a text composed of points that try to move away from the mouse cursor, and the text input in the bottom allows the user to edit the displayed text in real time.",
+	"type": "EXPERIMENT",
+	"copyright": "DSH++"
+}

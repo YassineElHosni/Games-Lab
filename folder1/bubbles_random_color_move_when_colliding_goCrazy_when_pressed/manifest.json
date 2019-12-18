@@ -1,0 +1,6 @@
+{
+	"title": "Virus Bubbles",
+	"description":"bubbles that have random colors and move slowly, but when you click on one of them it turns red and starts moving really fast, and if it touches one the others, then they do the same.",
+	"type": "EXPERIMENT",
+	"copyright": "YH"
+}

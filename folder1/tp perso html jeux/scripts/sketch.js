@@ -6,12 +6,12 @@
 function preload(){
   
   //images
+	console.log('images loading!');
   avatarImgLoad();
   mapImgLoad();
 	bombImgLoad();
+	console.log('images loaded!');
 	
-	//sound
-	boomSound = loadSound("assets/sound/boom.mp3");
 }
 
   var blocks = [];
@@ -62,6 +62,11 @@ function booom(x, y, col){
 	}
 }
 function setup() {
+	
+	//sound
+	console.log('sound loading!');
+	boomSound = loadSound("assets/sound/boom.mp3");
+	console.log('sound loaded!');
 	
 	count = 0;
 	plys.push(new ply(100, 100));

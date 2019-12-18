@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,19 +9,23 @@
 		
 		var list;
 		var listManifests = [];
-
+		
 		function preload(){
-			list = loadJSON("folder2/data.json");
+			list = loadJSON("folder2/data.json", function(){
+  			names = list.names;
+  			for (var i = 0; i < names.length+1; i++) {
+  			  loadJSON("folder1/"+names[i]+"/manifest.json",function(data){
+  				    data.folderName = names[listManifests.length];
+  				    listManifests.push(data);
+  				});
+  			}
+  			
+			});
 
-			var names = list.names;
-			for (var i = 0; i < names.length; i++) {
-				listManifests[i] = loadJSON("folder1/"+names[i]+"/manifest.json");
-				listManifests[i].folderName = names[i];
-			}
-			console.log(listManifests);
 		  
 		}
 		function setup(){
+		  console.log(listManifests);
 			createMenu();
 		}
 		//create a menu with the names of foldes inside the current folder.
@@ -32,17 +34,16 @@
 			var ch = "<ul id='menu'>";
 						for(var i = 0; i < listManifests.length; i++){
 							//createP(names[i]);
-							ch += createLink(listManifests[i].folderName);
+							ch += createLink(listManifests[i].folderName, listManifests[i].title);
 						}
 				ch += "</ul>";document.getElementById("menu").innerHTML = ch;
 			
 		}
 		//create a link form a given folder name.
-		function createLink(folderName){
+		function createLink(folderName, title){
 			var ch = "<li>"+
 						"<a href='/Games-Lab/folder1/"+folderName+"/index.html'>";
-					folderName = folderName.replace(/[_|-]/g, " ");
-					ch += folderName.toLowerCase()+
+					ch += title+
 						"</a>"+
 					"</li>";
 			return ch;

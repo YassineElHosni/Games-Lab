@@ -17,7 +17,8 @@
 
 			var names = list.names;
 			for (var i = 0; i < names.length; i++) {
-				listManifests[names[i]] = loadJSON("folder1/"+names[i]"/manifest.json");
+				listManifests[i] = loadJSON("folder1/"+names[i]"/manifest.json");
+				listManifests[i].folderName = names[i];
 			}
 			console.log(listManifests);
 		  
@@ -27,11 +28,11 @@
 		}
 		//create a menu with the names of foldes inside the current folder.
 		function createMenu(){
-			var names = list.names;
+			//var names = list.names;
 			var ch = "<ul id='menu'>";
-						for(var i = 0; i < names.length; i++){
+						for(var i = 0; i < listManifests.length; i++){
 							//createP(names[i]);
-							ch += createLink(names[i]);
+							ch += createLink(listManifests[i].folderName);
 						}
 				ch += "</ul>";document.getElementById("menu").innerHTML = ch;
 			

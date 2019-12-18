@@ -5,14 +5,21 @@
 
 <head>
 	<meta charset="utf-8" />
-		<title>Games-Lab</title>
-		<script src="folder2/p5.js"></script>
-		<script>
-			
+	<title>Games-Lab</title>
+	<script src="folder2/p5.js"></script>
+	<script>
+		
 		var list;
+		var listManifests = [];
 
 		function preload(){
-		  list = loadJSON("folder2/data.json");  
+			list = loadJSON("folder2/data.json");
+
+			var names = list.names;
+			for (var i = 0; i < names.length; i++) {
+				listManifests[names[i]] = loadJSON("folder1/"+names[i]"/manifest.json");
+			}
+			console.log(listManifests);
 		  
 		}
 		function setup(){
@@ -39,8 +46,8 @@
 					"</li>";
 			return ch;
 		}
-		</script>
-		<style>
+	</script>
+	<style>
 		#menu {
 			font-size:18px;
 			font-family:'Agency FB';
@@ -84,8 +91,8 @@
 				padding-left:80%;
 			}
 		}
-		</style>
-	</head>
+	</style>
+</head>
 <!-- <frameset rows="25%,*"> -->
 <!-- <frameset rows="*">
 	<frame name="a" src="./folder1/Steering_Behaviors_Welcome/index.html">
